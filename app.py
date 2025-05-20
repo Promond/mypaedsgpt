@@ -5,8 +5,14 @@ from openai import OpenAI
 # Set up page
 st.set_page_config(page_title="MyPaedsGPT", layout="centered")
 
-# Load OpenAI API key
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+# import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=st.secrets["OPENAI_API_KEY"],
+    organization=st.secrets["OPENAI_ORG"],
+    project=st.secrets["OPENAI_PROJECT"])
+
 
 # --- TABS ---
 tab1, tab2, tab3 = st.tabs(["Clinical Q&A", "Research & Global Resources", "Clinic Letter Generator"])
