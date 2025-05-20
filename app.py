@@ -24,16 +24,16 @@ with tab1:
 
     def get_clinical_answer(region, question):
         try:
-    response = client.chat.completions.create(
-        model="gpt-4",
-        messages=[
-            {"role": "user", "content": clinical_question}
-        ]
-    )
-    answer = response.choices[0].message.content
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=[
+                    {"role": "user", "content": clinical_question}
+                ]
+            )
+            answer = response.choices[0].message.content
 
-except Exception as e:
-    st.error(f"An error occurred: {e}")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
 
 
 
