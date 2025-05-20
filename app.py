@@ -5,13 +5,13 @@ from openai import OpenAI
 # Set up page
 st.set_page_config(page_title="MyPaedsGPT", layout="centered")
 
-# import os
 from openai import OpenAI
 
 client = OpenAI(
     api_key=st.secrets["OPENAI_API_KEY"],
     organization=st.secrets["OPENAI_ORG"],
     project=st.secrets["OPENAI_PROJECT"])
+
 
 
 # --- TABS ---
