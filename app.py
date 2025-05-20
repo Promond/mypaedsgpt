@@ -1,4 +1,3 @@
-
 import streamlit as st
 from openai import OpenAI
 
@@ -35,6 +34,7 @@ with tab1:
 
 except Exception as e:
     st.error(f"An error occurred: {e}")
+
 
 
     if st.button("Get Answer", key="qna_button"):
