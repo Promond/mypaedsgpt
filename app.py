@@ -27,13 +27,12 @@ with tab1:
         try:
             system_prompt = f"You are a senior paediatric consultant using {region} guidelines. Provide a concise, evidence-based answer."
             response = client.chat.completions.create(
-                model="gpt-4",
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": question}
-                ]
-            )
-            return response.choices[0].message.content
+    model="gpt-4",
+    messages=[
+        {"role": "user", "content": clinical_question}
+    ]
+)
+answer = response.choices[0].message.content
         except Exception as e:
             return f"Error: {str(e)}"
 
