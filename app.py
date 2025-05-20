@@ -39,9 +39,10 @@ if st.button("Get Answer"):
     else:
         st.warning("Please enter a question.")
 
-# --- (Second Section Placeholder) ---
+# --- Research & Global Resources Placeholder ---
 st.markdown("---")
-st.subheader("Coming Soon: Research & Global Resources")
+st.subheader("Research & Global Resources")
+st.info("This section will provide access to indexed guidelines, reference materials, topic cards, and search tools.")
 
 # --- Clinic Letter Generator (Third Section) ---
 st.markdown("---")
@@ -54,6 +55,12 @@ clinic_type = st.selectbox("Select Clinic Type", [
 ])
 
 hospital_number = st.text_input("Enter Hospital Number")
+patient_name = st.text_input("Enter Patient Name")
+dob = st.date_input("Enter Date of Birth")
+date_seen = st.date_input("Enter Date Seen")
+clinical_summary = st.text_area("Clinical Summary / Findings")
+impression = st.text_area("Impression / Working Diagnosis")
+plan = st.text_area("Management Plan / Follow-up Actions")
 
 sign_off = st.selectbox("Select Professional Role", [
     "Specialty Doctor in Paediatrics",
@@ -68,3 +75,25 @@ sign_off = st.selectbox("Select Professional Role", [
     "Consultant Paediatrician with Special Interest in Paediatric Cardiology",
     "Consultant Paediatric Cardiologist"
 ])
+
+if st.button("Generate Letter"):
+    if all([patient_name, clinical_summary, impression, plan]):
+        st.success("Clinic Letter Preview")
+        st.markdown(f"**Patient Name:** {patient_name}")
+        st.markdown(f"**Hospital Number:** {hospital_number}")
+        st.markdown(f"**Date of Birth:** {dob.strftime('%Y-%m-%d')}")
+        st.markdown(f"**Date Seen:** {date_seen.strftime('%Y-%m-%d')}")
+        st.markdown("---")
+        st.markdown(f"**Clinic Type:** {clinic_type}")
+        st.markdown(f"**Clinical Summary:**
+{clinical_summary}")
+        st.markdown(f"**Impression:**
+{impression}")
+        st.markdown(f"**Plan:**
+{plan}")
+        st.markdown("---")
+        st.markdown(f"**Yours sincerely,**
+
+{sign_off}")
+    else:
+        st.warning("Please fill in all required fields.")
