@@ -25,16 +25,17 @@ with tab1:
 
     def get_clinical_answer(region, question):
         try:
-            system_prompt = f"You are a senior paediatric consultant using {region} guidelines. Provide a concise, evidence-based answer."
-            response = client.chat.completions.create(
-    model="gpt-4",
-    messages=[
-        {"role": "user", "content": clinical_question}
-    ]
-)
-answer = response.choices[0].message.content
-        except Exception as e:
-            return f"Error: {str(e)}"
+    response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "user", "content": clinical_question}
+        ]
+    )
+    answer = response.choices[0].message.content
+
+except Exception as e:
+    st.error(f"An error occurred: {e}")
+
 
     if st.button("Get Answer", key="qna_button"):
         if question:
